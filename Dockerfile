@@ -1,21 +1,21 @@
-FROM node:lts-buster
+FROM node:18-alpine
 
-RUN apt-get update && \
-  apt-get install -y \
-  ffmpeg \
-  imagemagick \
-  webp && \
-  apt-get upgrade -y && \
-  rm -rf /var/lib/apt/lists/*
-  
 WORKDIR /usr/src/app
 
-COPY package.json .
+# Install required dependencies
+RUN apk add --no-cache \
+    ffmpeg \
+    imagemagick \
+    webp \
+    git \
+    curl \
+    bash
 
-RUN npm install && npm install -g qrcode-terminal pm2
+COPY package*.json ./
+RUN npm install --only=production
 
 COPY . .
 
-EXPOSE 5000
+EXPOSE 8000
 
 CMD ["npm", "start"]
