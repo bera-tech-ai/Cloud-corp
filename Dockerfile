@@ -6,7 +6,8 @@ WORKDIR /usr/src/app
 RUN apk add --no-cache \
     ffmpeg \
     imagemagick \
-    webp \
+    imagemagick-webp \
+    libwebp \
     git \
     curl \
     bash
