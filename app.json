@@ -1,0 +1,64 @@
+{
+  "name": "Gifted Session Generator",
+  "description": "Auto-running WhatsApp bot session generator. No manual setup needed!",
+  "repository": "https://github.com/mauricegift/gifted-session-generator",
+  "logo": "https://files.catbox.moe/52699c.jpg",
+  "keywords": [
+    "whatsapp",
+    "bot",
+    "gifted",
+    "session",
+    "generator",
+    "multi-session",
+    "auto-bot",
+    "whatsapp-bot",
+    "baileys",
+    "gifted-md"
+  ],
+  "website": "https://giftedtech.co.ke",
+  "success_url": "/",
+  "env": {
+    "PORT": {
+      "description": "Port for the web server",
+      "value": "50900",
+      "required": false
+    },
+    "NODE_ENV": {
+      "description": "Environment (production/development)",
+      "value": "production",
+      "required": true
+    },
+    "OWNER_NUMBER": {
+      "description": "Your WhatsApp number for admin access",
+      "value": "",
+      "required": false
+    },
+    "BOT_NAME": {
+      "description": "Name of your bot",
+      "value": "𝐆𝐈𝐅𝐓𝐄𝐃 𝐌𝐃",
+      "required": false
+    },
+    "PREFIX": {
+      "description": "Command prefix for the bot",
+      "value": ".",
+      "required": false
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "eco"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "addons": [
+    {
+      "plan": "heroku-redis:hobby-dev"
+    }
+  ],
+  "stack": "heroku-22"
+}
