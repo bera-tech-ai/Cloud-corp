@@ -1,22 +1,7 @@
-FROM node:18-alpine
-
-WORKDIR /usr/src/app
-
-# Install required dependencies
-RUN apk add --no-cache \
-    ffmpeg \
-    imagemagick \
-    imagemagick-webp \
-    libwebp \
-    git \
-    curl \
-    bash
-
+FROM node:lts-buster
+WORKDIR /app
 COPY package*.json ./
-RUN npm install --only=production
-
+RUN npm install && npm install -g qrcode-terminal pm2
 COPY . .
-
-EXPOSE 8000
-
+EXPOSE 3000
 CMD ["npm", "start"]
